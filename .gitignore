@@ -1,0 +1,6 @@
+# Copias de seguridad locales
+assets/backup/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
