@@ -1,0 +1,217 @@
+﻿* {
+    box-sizing: border-box;
+}
+
+:root {
+    color-scheme: dark;
+    --page-bg: #111;
+    --text-color: #f5f5f5;
+    --header-bg: #171717;
+    --surface-bg: #1b1b1b;
+    --control-bg: #1f1f1f;
+    --border-color: #2a2a2a;
+    --muted-color: #cfcfcf;
+    --avatar-color: #a3c9ff;
+    --code-bg: #111;
+    --user-bubble-bg: #17233a;
+    --user-bubble-border: #2a3f6b;
+    --footer-color: #bdbdbd;
+}
+
+body[data-theme="light"] {
+    color-scheme: light;
+    --page-bg: #f4f6f8;
+    --text-color: #202124;
+    --header-bg: #fff;
+    --surface-bg: #fff;
+    --control-bg: #f0f2f5;
+    --border-color: #d5d9df;
+    --muted-color: #4b5563;
+    --avatar-color: #2563eb;
+    --code-bg: #eef1f5;
+    --user-bubble-bg: #e5efff;
+    --user-bubble-border: #bfd4fa;
+    --footer-color: #5f6368;
+}
+
+html, body{
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background: var(--page-bg);
+    color: var(--text-color);
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Cantarell, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+}
+
+.app-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px;
+    background: var(--header-bg);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.brand, .settings {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.brand-logo {
+    width: auto;
+    height: 5em;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+select#modelSelect {
+    background: var(--control-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 6px 8px;
+    border-radius: 6px;
+}
+
+button {
+    background: #3b82f6;
+    color: #fff;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button.ghost {
+    background: transparent;
+    color: var(--muted-color);
+    border: 1px solid var(--border-color);
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.chat {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 10px 12px 16px;
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+    gap: 10px;
+    min-height: 0;
+}
+
+.messages {
+    overflow: auto;
+    padding: 8px;
+    gap: 12px;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.message {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 8px;
+    align-items: flex-start;
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--control-bg);
+    border: 1px solid var(--border-color);
+    color: var(--avatar-color);
+    font-weight: 700;
+    font-size: 12px;
+}
+
+.bubble {
+    background: var(--surface-bg);
+    border: 1px solid var(--border-color);
+    padding: 8px 10px;
+    border-radius: 8px;
+    white-space: pre-wrap;
+}
+
+.bubble > :first-child {
+    margin-top: 0;
+}
+
+.bubble > :last-child {
+    margin-bottom: 0;
+}
+
+.bubble pre {
+    overflow-x: auto;
+    padding: 8px;
+    border-radius: 6px;
+    background: var(--code-bg);
+}
+
+.bubble code {
+    font-family: Consolas, monospace;
+}
+
+.bubble :not(pre) > code {
+    padding: 2px 4px;
+    border-radius: 4px;
+    background: var(--code-bg);
+}
+
+.message.user .bubble {
+    background: var(--user-bubble-bg);
+    border-color: var(--user-bubble-border);
+}
+
+.composer {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+    background: var(--header-bg);
+    border: 1px solid var(--border-color);
+    padding: 8px;
+    border-radius:8px;
+} 
+
+.composer textarea {
+    resize: none;
+    background: var(--surface-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 8px 10px;
+    border-radius: 6px;
+    min-height: 40px;
+    max-height: 180px;
+}
+
+.composer-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.app-footer {
+    color: var(--footer-color);
+    padding: 0 12px 12px;
+    font-size: 12px;
+    text-align: center;
+}
+
+.error {
+    color: #ff3b3b;
+}
