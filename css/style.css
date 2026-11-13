@@ -113,39 +113,59 @@ button:disabled {
 
 .messages {
     overflow: auto;
-    padding: 8px;
-    gap: 12px;
+    padding: 14px 8px;
+    gap: 16px;
     display: flex;
     flex-direction: column;
     min-height: 0;
 }
 
 .message {
-    display: grid;
-    grid-template-columns: 32px 1fr;
-    gap: 8px;
-    align-items: flex-start;
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+    width: 100%;
+}
+
+.message.user {
+    flex-direction: row-reverse;
+}
+
+.message.model {
+    flex-direction: row;
 }
 
 .avatar {
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    display: grid;
-    place-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
     background: var(--control-bg);
     border: 1px solid var(--border-color);
     color: var(--avatar-color);
     font-weight: 700;
-    font-size: 12px;
+    font-size: 11px;
+    user-select: none;
+    margin-bottom: 2px;
+}
+
+.message.user .avatar {
+    background: var(--user-bubble-bg);
+    border-color: var(--user-bubble-border);
 }
 
 .bubble {
     background: var(--surface-bg);
     border: 1px solid var(--border-color);
-    padding: 8px 10px;
-    border-radius: 8px;
-    white-space: pre-wrap;
+    padding: 10px 14px;
+    border-radius: 18px 18px 18px 4px;
+    max-width: min(85%, 650px);
+    width: fit-content;
+    word-break: break-word;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .bubble > :first-child {
@@ -158,9 +178,10 @@ button:disabled {
 
 .bubble pre {
     overflow-x: auto;
-    padding: 8px;
+    padding: 8px 10px;
     border-radius: 6px;
     background: var(--code-bg);
+    max-width: 100%;
 }
 
 .bubble code {
@@ -176,6 +197,20 @@ button:disabled {
 .message.user .bubble {
     background: var(--user-bubble-bg);
     border-color: var(--user-bubble-border);
+    border-radius: 18px 18px 4px 18px;
+    white-space: pre-wrap;
+}
+
+.message.model .bubble {
+    white-space: normal;
+}
+
+.message.model .bubble p {
+    margin: 0 0 8px 0;
+}
+
+.message.model .bubble p:last-child {
+    margin-bottom: 0;
 }
 
 .composer {
