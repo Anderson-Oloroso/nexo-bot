@@ -21,10 +21,32 @@
                 <option value="gemini-3.5-flash-lite">Gemini-3.5-flash-lite</option>
                 <option value="gemini-3.1-flash-lite">Gemini-3.1-flash-lite</option>
             </select>
-            <button id="apiKeyBtn" class="ghost" type="button" title="Configurar clave de API">Clave</button>
-            <button id="helpBtn" class="ghost" type="button" title="Instrucciones para obtener tu clave">Ayuda</button>
-            <button id="themeToggle" class="ghost" type="button" aria-label="Cambiar a modo día" aria-pressed="false">Día</button>
-            <button id="clearChatBtn" class="ghost" title="Borrar conversación">Borrar</button>
+            <details class="settings-menu">
+                <summary class="menu-toggle" aria-label="Abrir menú de opciones" title="Opciones">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </summary>
+            
+                <div class="menu-dropdown">
+                    <button id="apiKeyBtn" class="ghost" type="button">
+                        Clave API
+                    </button>
+                
+                    <button id="helpBtn" class="ghost" type="button">
+                        Ayuda
+                    </button>
+                
+                    <button id="themeToggle" class="ghost" type="button"
+                        aria-label="Cambiar a modo día" aria-pressed="false">
+                        Día / Noche
+                    </button>
+                
+                    <button id="clearChatBtn" class="ghost" type="button">
+                        Borrar conversación
+                    </button>
+                </div>
+            </details>
         </div>
     </header>
     <main class="chat">
