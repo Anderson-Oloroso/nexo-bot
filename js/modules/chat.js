@@ -23,17 +23,21 @@ export async function sendMessage() {
 
     const apiKey = getApiKey();
 
+    
     if (!apiKey) {
-        showError('Configura tu API Key antes de enviar un mensaje.');
+        elements.apiKeyStatus.textContent = 'Por favor, introduce tu clave de API para poder enviar un mensaje.';
+        elements.apiKeyStatus.className = 'status-msg error';
+        elements.apiKeyInput.value = '';
+
+        if (!elements.apiModal.open) {
+            elements.apiModal.showModal();
+        }
+        elements.apiKeyInput.focus();
         return;
     }
 
-    const model = elements.modelSelect.value;
-
-    // Mostrar el mensaje del usuario.
+    const model = elements.modelSelect.value;    // Mostrar el mensaje del usuario.
     appendMessage('user', text);
-
-    // Limpiar el campo de escritura.
     elements.prompt.value = '';
     elements.prompt.style.height = 'auto';
 
