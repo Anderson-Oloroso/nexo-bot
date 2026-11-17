@@ -9,6 +9,8 @@ export const elements = Object.freeze({
     helpBtn: document.getElementById('helpBtn'),
     apiModal: document.getElementById('apiModal'),
     closeModalBtn: document.getElementById('closeModalBtn'),
+    helpModal: document.getElementById('helpModal'),
+    closeHelpModalBtn: document.getElementById('closeHelpModalBtn'),
     saveApiKeyBtn: document.getElementById('saveApiKeyBtn'),
     apiKeyInput: document.getElementById('apiKeyInput'),
     apiKeyStatus: document.getElementById('apiKeyStatus'),

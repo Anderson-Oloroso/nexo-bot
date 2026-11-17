@@ -15,31 +15,43 @@ function initTheme() {
 function initApiKey() {
     elements.apiKeyBtn.addEventListener('click', () => {
         elements.apiKeyInput.value = getApiKey();
-        elements.apiModal.classList.add('active');
+
+        if (!elements.apiModal.open) {
+            elements.apiModal.showModal();
+        }
     });
 
     elements.closeModalBtn.addEventListener('click', () => {
-        elements.apiModal.classList.remove('active');
+        elements.apiModal.close();
     });
 
     elements.saveApiKeyBtn.addEventListener('click', () => {
         const apiKey = elements.apiKeyInput.value;
 
         if (!saveApiKey(apiKey)) {
-            elements.apiKeyStatus.textContent =
-                'Introduce una API Key válida.';
+            elements.apiKeyStatus.textContent = 'Introduce una API Key válida.';
 
             return;
         }
 
-        elements.apiKeyStatus.textContent =
-            'API Key guardada correctamente.';
-
+        elements.apiKeyStatus.textContent = 'API Key guardada correctamente.';
         elements.apiKeyInput.value = '';
 
         setTimeout(() => {
-            elements.apiModal.classList.remove('active');
+            elements.apiModal.close();
         }, 1000);
+    });
+}
+
+function initHelp() {
+    elements.helpBtn.addEventListener('click', () => {
+        if (!elements.helpModal.open) {
+            elements.helpModal.showModal();
+        }
+    });
+
+    elements.closeHelpModalBtn.addEventListener('click', () => {
+        elements.helpModal.close();
     });
 }
 
@@ -52,6 +64,7 @@ function initClearChat() {
 }
 
 function initApp() {
+    initHelp();
     initTheme();
     initApiKey();
     initClearChat();

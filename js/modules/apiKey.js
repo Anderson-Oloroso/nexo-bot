@@ -1,3 +1,4 @@
+const API_KEY_STORAGE = 'nexo_gemini_api_key';
 
 export function getApiKey() {
     return localStorage.getItem(API_KEY_STORAGE) || '';
