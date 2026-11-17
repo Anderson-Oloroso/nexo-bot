@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/marked@15.0.12/marked.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.6/dist/purify.min.js" defer></script>
-    <script src="./js/script.js" defer></script>
+    <script type="module" src="js/main.js"></script>
 </head>
 <body>
     <header class="app-header">
@@ -50,15 +50,47 @@
                 </div>
             </div>
             <p id="apiKeyStatus" class="status-msg"></p>
+        </div>
+    </dialog>
+    <dialog id="helpModal" class="modal">
+        <div class="modal-header">
+            <h3>Ayuda de Nexo-Bot</h3>
+            <button id="closeHelpModalBtn" class="ghost close-btn" type="button" aria-label="Cerrar">&times;</button>
+        </div>
+        <div class="modal-body">
             <div class="guide-box">
                 <h4>Instrucciones para obtener tu clave</h4>
                 <ol class="steps-list">
-                    <li>Accede a <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer">Google AI Studio</a> e inicia sesión con tu cuenta de Google.</li>
+                    <li>
+                        Accede a
+                        <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer">Google AI Studio</a>
+                        e inicia sesión con tu cuenta de Google.
+                    </li>
+
                     <li>Haz clic en el botón <strong>Create API key</strong>.</li>
-                    <li>Selecciona un proyecto existente o crea uno nuevo y confirma.</li>
-                    <li>Copia la clave generada y pégala en el campo superior.</li>
+                    <li>
+                        Selecciona un proyecto existente o crea uno nuevo
+                        y confirma.
+                    </li>
+                    <li>
+                        Copia la clave generada y pégala en la configuración
+                        de API de Nexo-Bot.
+                    </li>
                 </ol>
-                <p class="security-note">Privacidad: La clave se almacena exclusivamente en tu navegador (localStorage) y se comunica de forma directa con la API de Google sin intermediarios.</p>
+                <p class="security-note">
+                    Privacidad: La clave se almacena exclusivamente en tu
+                    navegador (localStorage) y se comunica directamente
+                    con la API de Google.
+                </p>
+            </div>
+            <div class="guide-box">
+                <h4>¿Cómo utilizar Nexo-Bot?</h4>
+                <ol class="steps-list">
+                    <li>Configura tu API Key desde el botón Clave.</li>
+                    <li>Selecciona el modelo de Gemini disponible.</li>
+                    <li>Escribe tu pregunta en el área de conversación.</li>
+                    <li>Pulsa Enviar o utiliza la tecla Enter.</li>
+                </ol>
             </div>
         </div>
     </dialog>
