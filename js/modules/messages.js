@@ -23,20 +23,30 @@ export function appendMessage(role, text) {
     renderMessage(role, text);
 }
 
-function renderMessage(role, text) {
-    const messageElement = document.createElement('div');
+function renderMessage(role, text, isError = false) {
+    const wrapper = document.createElement('div');
+    wrapper.className = `message ${role}`;
 
-    messageElement.classList.add('message', role);
+    const avatar = document.createElement('div');
+    avatar.className = 'avatar';
+    avatar.textContent = role === 'user' ? 'Tu' : 'Nx';
 
-    if (role === 'user') {
-        messageElement.textContent = text;
+    const bubble = document.createElement('div');
+    bubble.className = 'bubble';
+
+    if (isError) {
+        bubble.classList.add('error');
+        bubble.textContent = text;
+    } else if (role === 'model') {
+        bubble.innerHTML = DOMPurify.sanitize(marked.parse(text));
     } else {
-        const html = marked.parse(text);
-        messageElement.innerHTML = DOMPurify.sanitize(html);
+        bubble.textContent = text;
     }
 
-    elements.messages.appendChild(messageElement);
+    wrapper.appendChild(avatar);
+    wrapper.appendChild(bubble);
 
+    elements.messages.appendChild(wrapper);
     scrollToBottom();
 }
 
@@ -45,17 +55,10 @@ export function clearMessages() {
     elements.messages.innerHTML = '';
 }
 
-export function scrollToBottom() {
-    elements.messages.scrollTop = elements.messages.scrollHeight;
+export function showError(text) {
+    renderMessage('model', text, true);
 }
 
-export function showError(text) {
-    const errorElement = document.createElement('div');
-
-    errorElement.classList.add('message', 'error');
-    errorElement.textContent = text;
-
-    elements.messages.appendChild(errorElement);
-
-    scrollToBottom();
+export function scrollToBottom() {
+    elements.messages.scrollTop = elements.messages.scrollHeight;
 }
